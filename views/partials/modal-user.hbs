@@ -1,0 +1,67 @@
+{{! <button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Launch demo modal
+</button> }}
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="width: 100%; height:100%; top:20%;"
+>
+  {{#each dataUser}}
+    <div
+      style="border-radius:16px;
+  padding: 4px;"
+      class="modal-dialog border"
+    >
+      <div class="modal-content border-0 p-2">
+        <div class="modal-header border border-white">
+          <h2 class="modal-title" id="staticBackdropLabel">{{this.name}}</h2>
+          <button
+            type="button"
+            class="btn-close opacity-100"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            {{! data-dismiss="modal" }}
+          ></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td scope="row">Телефон:</td>
+                <td>{{this.phone}}</td>
+              </tr>
+              <tr>
+                <td scope="row">Почта:</td>
+                <td>{{this.email}}</td>
+              </tr>
+              <tr>
+                <td scope="row">Дата приема:</td>
+                <td>{{this.hire_date}}</td>
+              </tr>
+              <tr>
+                <td scope="row">Подразделение:</td>
+                <td>{{this.department}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+          <div class="d-grid gap-1">
+            <span>Дополнительная информация:</span>
+
+            <span>{{this.position_name}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {{/each}}
+</div>

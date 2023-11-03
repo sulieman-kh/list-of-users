@@ -1,0 +1,123 @@
+{{! Modal of User }}
+{{#if modal}}
+  <div
+    class="modal fade show"
+    id="myModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    {{#each modal}}
+      <div
+        style=""
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div class="modal-content border-0 p-2" style="border-radius: 16px;">
+          <div class="modal-header border border-white">
+            <h2
+              class="modal-title color-plumbum fs-24"
+              style="font-weight: 700;"
+            >{{this.name}}</h2>
+            <button
+              type="button"
+              class="btn-close opacity-100"
+              style="font-size: 20px;"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td
+                    scope="row"
+                    style="font-size: 18px; padding-left:0"
+                  >Телефон:</td>
+                  <td class="color-grey">{{this.phone}}</td>
+                </tr>
+                <tr>
+                  <td
+                    scope="row"
+                    style="font-size: 18px; padding-left:0;"
+                  >Почта:</td>
+                  <td class="color-grey">{{this.email}}</td>
+                </tr>
+                <tr>
+                  <td scope="row" style="font-size: 18px; padding-left:0;">Дата
+                    приема:</td>
+                  <td class="color-grey">{{this.hire_date}}</td>
+                </tr>
+                <tr>
+                  <td
+                    scope="row"
+                    style="font-size: 18px; padding-left:0;"
+                  >Подразделение:</td>
+                  <td class="color-grey">{{this.department}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+            <div class="d-grid gap-1;">
+              <span style="font-size: 18px;">Дополнительная информация:</span>
+
+              <span class="color-grey">{{this.position_name}}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{! Script to open 'modal' when user card is clicked 👆 }}
+  <script>
+    var myModal = new bootstrap.Modal(document.getElementById("myModal"), {});
+    document.onreadystatechange = function () { myModal.show(); };
+  </script>
+{{/if}}
+
+{{! User's Cards }}
+<div class="row gap-4 mx-auto justify-content-center">
+  {{#each data}}
+    <form
+      class="card shadow"
+      style="width: 22rem; height:18rem; border-radius:14px"
+    >
+      <a
+        href="/?term={{this.name}}"
+        type="button"
+        class="card-block card-link stretched-link text-decoration-none"
+      >
+        <div class="card-body">
+          <h2
+            class="card-title color-plumbum fs-24"
+            style="font-weight: 700;"
+          >{{this.name}}</h2>
+          <div class="mt-4">
+            <div class="d-flex align-items-center gap-3 ml-5 mb-2">
+              <i
+                class="fa fa-mobile"
+                aria-hidden="true"
+                style="color:#432eab; font-size:22px"
+              ></i>
+              <p
+                class="card-subtitle text-muted fs-14 color-grey"
+              >{{this.phone}}</p>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <i
+                class="fa fa-envelope-o"
+                aria-hidden="true"
+                style="color:#432eab"
+              ></i>
+              <p
+                class="card-text text-muted fs-14 color-grey"
+              >{{this.email}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </form>
+  {{/each}}
+</div>
